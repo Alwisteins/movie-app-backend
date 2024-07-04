@@ -62,13 +62,14 @@ const createNewCapture = async (req, res) => {
   }
 };
 
-const getAllCaptures = async () => {
+const getAllCaptures = async (req, res) => {
   try {
     const [rows] = await captureModel.getAllCaptures();
 
     return res.status(200).json({
       status: true,
       message: "berhasil mengambil semua capture",
+      data: rows
     });
   } catch (error) {
     return res.status(401).json({
